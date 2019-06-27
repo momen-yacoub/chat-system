@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  active_record:
+    exceptions:
+      not_found: 'Entity you are looking for does not exist'
