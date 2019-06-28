@@ -1,10 +1,10 @@
 RSpec.describe ChatsController do
   let(:chat) {create(:chat)}
-
+  let(:application) {create(:application_with_chats, chats: [chat])}
   let(:chat_params) {attributes_for(:chat)}
 
   describe 'POST create' do
-    subject {post :create, chat: chat_params}
+    subject {post :create, application_token: application.token, chat: chat_params}
     context 'when new chat is inserted' do
       it { is_expected.to be_success }
       it 'no duplicates for chat chat_number' do
@@ -18,7 +18,7 @@ RSpec.describe ChatsController do
   end
 
   describe 'PUT update' do
-    subject {put :update, id: chat.chat_number, chat: chat_params}
+    subject {put :update, application_token: application.token, number: chat.chat_number, chat: chat_params}
     context 'when exists chat is updated' do
       it {is_expected.to be_success}
       it 'updates the chat_number of the chat' do
@@ -28,7 +28,7 @@ RSpec.describe ChatsController do
   end
 
   descirbe 'GET show' do
-    subject {get :show, id: chat.token}
+    subject {get :show, application_token: application.token, number: chat.token}
     context 'when chat exists' do
       it{is_expected.to be_success}
       it 'get the correct chat' do

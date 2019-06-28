@@ -6,7 +6,13 @@ FactoryBot.define do
     chats
 
     factory :application_with_chats do
-      trans
+      transient do
+        chats []
+      end
+
+      after(:create) do |app, evaluator|
+        app.chats << evaluator.chats
+      end
     end
   end
 end
