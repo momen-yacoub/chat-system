@@ -3,11 +3,10 @@ FactoryBot.define do
     desc {Faker::Lorem.paragraph}
     sequence(:token) {|n| "token_#{n}"}
     chats_count {0}
-    chats
 
     factory :application_with_chats do
       transient do
-        chats []
+        chats {[]}
       end
 
       after(:create) do |app, evaluator|
