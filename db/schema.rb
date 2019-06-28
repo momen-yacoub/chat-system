@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_06_27_201749) do
 
   create_table "chats", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "messages_count"
-    t.integer "chat_numbe"
+    t.integer "chat_number"
     t.bigint "application_id"
     t.index ["application_id"], name: "index_chats_on_application_id"
   end
