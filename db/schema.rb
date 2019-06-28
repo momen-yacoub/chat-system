@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_06_27_201749) do
     t.integer "messages_count", default: 0
     t.integer "chat_number"
     t.bigint "application_id"
+    t.index ["application_id", "chat_number"], name: "index_chats_on_application_id_and_chat_number", unique: true
     t.index ["application_id"], name: "index_chats_on_application_id"
   end
 
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_06_27_201749) do
     t.string "body"
     t.integer "message_number"
     t.bigint "chat_id"
+    t.index ["chat_id", "message_number"], name: "index_messages_on_chat_id_and_message_number", unique: true
     t.index ["chat_id"], name: "index_messages_on_chat_id"
   end
 

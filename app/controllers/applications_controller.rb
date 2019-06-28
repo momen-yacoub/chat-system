@@ -27,10 +27,10 @@ class ApplicationsController < ApplicationController
   private
 
   def application_params
-    require(:application).permit(:desc)
+    params.require(:application).permit(:desc)
   end
 
   def set_application
-    @application = Application.find_by!(sanitize_sql_for_conditions(['token=?', params[:token]]))
+    @application = Application.find_by!(token: senitize_param(params[:token]))
   end
 end

@@ -10,4 +10,8 @@ class ApplicationController < ActionController::API
   def not_found_response
     render json: {messages: [I18n.t('active_record.exceptions.not_found')]}, status: :unprocessable_entity
   end
+
+  def senitize_param(input)
+    ActiveRecord::Base::sanitize_sql(input)
+  end
 end

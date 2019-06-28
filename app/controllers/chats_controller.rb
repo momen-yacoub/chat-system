@@ -12,7 +12,7 @@ class ChatsController < ApplicationController
   end
 
   def update
-    result = ChatServices::Update.call(@chat)
+    result = ChatServices::Update.call(@chat, {})
     if result.success?
       render json: result.object, status: :ok
     else
@@ -27,12 +27,10 @@ class ChatsController < ApplicationController
   private
 
   def set_application
-    @application = Application.find_by!(sanitize_sql_for_conditions(['token=?', params[:application_token]]))
+    @application = Application.find_by!(token: senitize_param(params[:application_token]))
   end
 
   def set_chat
-    @chat = Chat.find_by!(sanitize_sql_for_conditions(['application_id = ? AND chat_number = ?',
-                                                       @application.id,
-                                                       params[:number]]))
+    @chat = Chat.find_by!(application_id: senitize_param(@application.id), chat_number: senitize_param(params[:number]))
   end
 end
