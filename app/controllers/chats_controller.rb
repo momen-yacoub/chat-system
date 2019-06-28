@@ -27,12 +27,12 @@ class ChatsController < ApplicationController
   private
 
   def set_application
-    @application = Application.find_by!(sanitize_sql_for_conditions(['token=?', params[:token]]))
+    @application = Application.find_by!(sanitize_sql_for_conditions(['token=?', params[:application_token]]))
   end
 
   def set_chat
     @chat = Chat.find_by!(sanitize_sql_for_conditions(['application_id = ? AND chat_number = ?',
                                                        @application.id,
-                                                       params[:chat_number]]))
+                                                       params[:number]]))
   end
 end

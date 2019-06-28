@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
   end
 
   def set_application
-    @application = Application.find_by!(sanitize_sql_for_conditions(['token=?', params[:token]]))
+    @application = Application.find_by!(sanitize_sql_for_conditions(['token=?', params[:application_token]]))
   end
 
   def set_chat
@@ -44,6 +44,6 @@ class MessagesController < ApplicationController
   def set_message
     @message = Message.find_by!(sanitize_sql_for_conditions(['chat_id = ? AND message_number = ?',
                                                              @chat.id,
-                                                             params[:message_number]]))
+                                                             params[:number]]))
   end
 end
