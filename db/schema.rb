@@ -15,13 +15,13 @@ ActiveRecord::Schema.define(version: 2019_06_27_201749) do
   create_table "applications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "desc"
     t.string "token"
-    t.integer "chats_count"
+    t.integer "chats_count", default: 0
     t.index ["id", "token"], name: "index_applications_on_id_and_token"
     t.index ["token"], name: "index_applications_on_token"
   end
 
   create_table "chats", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "messages_count"
+    t.integer "messages_count", default: 0
     t.integer "chat_number"
     t.bigint "application_id"
     t.index ["application_id"], name: "index_chats_on_application_id"

@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 RSpec.describe ApplicationsController do
   let(:application) {create(:application)}
   let(:application_params) {attributes_for(:application)}
@@ -26,7 +28,7 @@ RSpec.describe ApplicationsController do
     end
   end
 
-  descirbe 'GET show' do
+  describe 'GET show' do
     subject {get :show, token: application.token}
     context 'when application exists' do
       it{is_expected.to be_success}
