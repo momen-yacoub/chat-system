@@ -1,5 +1,6 @@
 RSpec.describe ChatsController do
   let(:chat) {create(:chat)}
+
   let(:chat_params) {attributes_for(:chat)}
 
   describe 'POST create' do

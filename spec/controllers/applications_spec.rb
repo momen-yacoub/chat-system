@@ -17,7 +17,7 @@ RSpec.describe ApplicationsController do
   end
 
   describe 'PUT update' do
-    subject {put :update, id: application.token, application: application_params}
+    subject {put :update, token: application.token, application: application_params}
     context 'when exists application is updated' do
       it {is_expected.to be_success}
       it 'updates the desc of the application' do
@@ -27,7 +27,7 @@ RSpec.describe ApplicationsController do
   end
 
   descirbe 'GET show' do
-    subject {get :show, id: application.token}
+    subject {get :show, token: application.token}
     context 'when application exists' do
       it{is_expected.to be_success}
       it 'get the correct application' do
