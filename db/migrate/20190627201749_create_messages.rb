@@ -5,6 +5,7 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.integer :message_number
       t.references :chat, foreign_key: true
       t.index [:chat_id, :message_number], unique: true
+      t.timestamps
     end
   end
 end

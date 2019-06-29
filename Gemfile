@@ -45,6 +45,7 @@ end
 
 group :test do
   gem 'database_cleaner'
+  gem 'elasticsearch-extensions'
 end
 
 
@@ -52,3 +53,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'sidekiq'
+gem 'searchkick'
+

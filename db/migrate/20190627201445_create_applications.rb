@@ -5,6 +5,7 @@ class CreateApplications < ActiveRecord::Migration[5.2]
       t.string :token, index: true
       t.integer :chats_count, default: 0
       t.index [:id, :token]
+      t.timestamps
     end
   end
 end

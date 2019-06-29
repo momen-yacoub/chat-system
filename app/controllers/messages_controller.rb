@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   before_action :set_message, except: %i[create]
 
   def create
-    result = MessageServices::Create.call(@application, @chat)
+    result = MessageServices::Create.call(@application, @chat, message_params)
     if result.success?
       render json: result.object, status: :created
     else
