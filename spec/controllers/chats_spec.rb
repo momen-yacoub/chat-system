@@ -4,6 +4,7 @@ RSpec.describe ChatsController do
   let(:chat) {build(:chat)}
   let(:application) {create(:application_with_chats, chats: [chat])}
   let(:chat_params) {attributes_for(:chat)}
+  let(:message_params) {attributes_for(:message)}
 
   describe 'POST create' do
     let(:application) { create(:application) }
@@ -35,6 +36,18 @@ RSpec.describe ChatsController do
     subject {get :show, params: {application_token: application.token, number: chat.chat_number}}
     context 'when chat exists' do
       it{is_expected.to have_http_status(:found)}
+    end
+  end
+
+  describe 'GET search' do
+    context 'when search for message body' do
+      it 'should return matches' do
+        body = 'this is my body'
+        application.chats.each {|c| c.messages << Message.create(body: body)}
+        Message.reindex
+        get :search, params: {application_token: application.token, number: chat.chat_number, q: body}
+        expect(JSON.parse(response.body).empty?).not_to be_truthy
+      end
     end
   end
 end

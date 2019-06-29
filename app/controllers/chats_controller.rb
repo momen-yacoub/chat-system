@@ -24,6 +24,15 @@ class ChatsController < ApplicationController
     render json: @chat, status: :found
   end
 
+  def search
+    render json: MessageServices::Search.call(params[:q],
+                                              load: false,
+                                              misspellings: {edit_distance: 2},
+                                              where: {chat_id: @chat.id},
+                                              select: [:chat_id, :body, :message_number]),
+           status: :ok
+  end
+
   private
 
   def set_application
