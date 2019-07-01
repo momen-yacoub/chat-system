@@ -1,3 +1,4 @@
+require 'sidekiq'
 class ChatCreateWorker
   include Sidekiq::Worker
 
