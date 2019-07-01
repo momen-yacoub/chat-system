@@ -1,24 +1,12 @@
-# README
+# Chat System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hello whoever reading this readme.md, Hope you are in a good state, This repo is actually a task for a company that I had a change to apply to, But actually it was a great and fantastic experience and things to learn working through this task.
 
-Things you may want to cover:
+You are free to check the code, To make it a little bit clear, This repo will give a good intro for working with:
 
-* Ruby version
+* Elastic-search
+* Docker
+* Handling race condition
+* Playing with background jobs
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Feel free to read the [Wiki](https://github.com/AmrAdelKhalil/intsa-task/wiki) of this repo for more explanation.
