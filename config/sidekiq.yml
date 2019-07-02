@@ -6,3 +6,5 @@
     every: '30m'
   MessageCounterUpdaterWorker:
     every: '45m'
+  MessageReindexWorker:
+    in: '10s'
